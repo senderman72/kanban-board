@@ -1,0 +1,25 @@
+.links {
+  li {
+    padding: 15px 30px;
+    border-radius: 0 15px 15px 0;
+    width: 85%;
+    font-weight: bold;
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    color: var(--text-gray);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    &:hover,
+    &.active {
+      background-color: #f4f3f6;
+      color: var(--primary);
+    }
+
+    svg {
+      fill: var(--text-gray);
+    }
+  }
+}
