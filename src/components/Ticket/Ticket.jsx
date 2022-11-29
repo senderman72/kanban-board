@@ -14,8 +14,8 @@ export default function Ticket({ data }) {
       <p className="body-m">{data.tasks.length} subtasks</p>
       <ul>
         {showSubTasks &&
-          data.tasks.map((task) => {
-            return <li>{task.task}</li>;
+          data.tasks.map((task, index) => {
+            return <li key={index}>{task}</li>;
           })}
       </ul>
     </div>
