@@ -1,9 +1,9 @@
 import React from "react";
-import Links from "../Links/Links";
+
 import "./Dropdown.scss";
 import CrossIcon from "../../assets/icon-cross.svg";
 
-export default function Dropdown({ dropdown, toggleDropdown }) {
+export default function Dropdown({ dropdown, toggleDropdown, children }) {
   return (
     <div className={`dropdown ${dropdown ? "active-dropdown" : ""}`}>
       <div className="dropdown-box">
@@ -15,7 +15,7 @@ export default function Dropdown({ dropdown, toggleDropdown }) {
         >
           <img src={CrossIcon} alt="" />
         </button>
-        <Links />
+        {children}
       </div>
     </div>
   );
