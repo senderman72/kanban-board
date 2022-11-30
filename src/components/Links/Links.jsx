@@ -8,6 +8,13 @@ export default function Links() {
     useContext(BoardContext);
   const [value, setValue] = useState("");
 
+  const [isOpen, setisOpen] = useState(false);
+
+  function toggleIsOpen() {
+    setisOpen(!isOpen);
+    setValue("");
+  }
+
   return (
     <ul className="links">
       {projects.map((project, index) => {
@@ -24,21 +31,27 @@ export default function Links() {
           </li>
         );
       })}
-      <li className="new-board">
+      <li className="new-board" onClick={() => toggleIsOpen()}>
         <BoardIcon /> +Create new Board
       </li>
-      <input
-        type="text"
-        value={value}
-        onChange={(e) => setValue(e.target.value)}
-      />
-      <button
-        onClick={() => {
-          addNewProject(value);
-        }}
-      >
-        Add project
-      </button>
+      {isOpen && (
+        <div className="new-project-input">
+          <input
+            type="text"
+            placeholder="Project name"
+            value={value}
+            onChange={(e) => setValue(e.target.value)}
+          />
+          <button
+            onClick={() => {
+              addNewProject(value);
+              toggleIsOpen();
+            }}
+          >
+            Add project
+          </button>
+        </div>
+      )}
     </ul>
   );
 }

@@ -42,3 +42,31 @@
     }
   }
 }
+
+.new-project-input {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: start;
+  padding: 0 25px;
+
+  input {
+    padding: 5px;
+    width: 100%;
+    border: 1px solid #373846;
+    border-radius: 5px;
+    background-color: transparent;
+    outline: none;
+    color: #f4f3f6;
+  }
+
+  button {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    background-color: var(--primary);
+    color: var(--text-lines);
+    cursor: pointer;
+  }
+}
