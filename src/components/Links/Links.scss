@@ -16,10 +16,29 @@
     &.active {
       background-color: #f4f3f6;
       color: var(--primary);
+      svg {
+        fill: var(--primary);
+      }
     }
 
     svg {
       fill: var(--text-gray);
+    }
+
+    &.new-board {
+      color: var(--primary);
+
+      svg {
+        fill: var(--primary);
+      }
+      &:hover {
+        background-color: var(--primary);
+        color: #f4f3f6;
+
+        svg {
+          fill: #f4f3f6;
+        }
+      }
     }
   }
 }

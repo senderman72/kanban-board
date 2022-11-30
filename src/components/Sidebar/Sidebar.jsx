@@ -4,11 +4,11 @@ import Links from "../Links/Links";
 import "./Sidebar.scss";
 
 export default function Sidebar() {
-  const { test } = useContext(BoardContext);
+  const { projects } = useContext(BoardContext);
 
   return (
     <div className="sidebar">
-      <p>All Board (2)</p>
+      <p>All Board ({projects.length})</p>
       <Links />
     </div>
   );

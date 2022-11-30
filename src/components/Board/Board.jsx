@@ -3,21 +3,6 @@ import { BoardContext } from "../../context/BoardContext";
 import Ticket from "../Ticket/Ticket";
 import "./Board.scss";
 
-const subTasks = [
-  {
-    task: "Tjena",
-  },
-  {
-    task: "Tjabba",
-  },
-];
-
-const testTicket = {
-  title: "Firstone",
-  description: "description",
-  tasks: subTasks,
-};
-
 export default function Board() {
   const { currentProject } = useContext(BoardContext);
 
