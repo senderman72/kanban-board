@@ -20,6 +20,16 @@
   width: 350px;
   background-color: var(--bg-gray);
   padding: 15px 0;
+  z-index: 999;
   border-radius: 10px;
   box-shadow: rgba(14, 14, 14, 0.2) 0px 2px 8px 0px;
+  position: relative;
+}
+
+.dropdown-close-btn {
+  background-color: transparent;
+  border: none;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
 }
