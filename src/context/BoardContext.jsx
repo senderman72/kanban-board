@@ -7,7 +7,7 @@ export const BoardContext = createContext();
 export default function BoardContextProvider({ children }) {
   const [projects, setProjects] = useState(projectsData);
   const [projectIndex, setProjectIndex] = useState(0);
-  const currentProject = projects[projectIndex];
+  const [currentProject, setCurrentProject] = useState(projects[projectIndex]);
 
   const changeBoard = (index) => {
     setProjectIndex(index);
@@ -46,6 +46,7 @@ export default function BoardContextProvider({ children }) {
   const value = {
     projects,
     currentProject,
+    setCurrentProject,
     changeBoard,
     addNewProject,
     createTicket,
