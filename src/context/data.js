@@ -2,7 +2,7 @@ import { v4 as uuidv4 } from "uuid";
 
 export const projectsData = [
   {
-    title: "Placa Board",
+    title: "Place Board",
     id: 1,
     board: {
       stage1: {

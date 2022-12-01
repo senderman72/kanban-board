@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import "./Createticket.scss";
 import { BoardContext } from "../../context/BoardContext";
+import { v4 as uuidv4 } from "uuid";
 
 export default function Createticket() {
   const { createTicket } = useContext(BoardContext);
@@ -45,7 +46,7 @@ export default function Createticket() {
       <button
         onClick={() => {
           createTicket({
-            id: "hej",
+            id: uuidv4(),
             title: title,
             description: description,
             tasks: [subTask],

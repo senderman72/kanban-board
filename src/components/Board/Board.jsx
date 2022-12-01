@@ -5,7 +5,7 @@ import "./Board.scss";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 export default function Board() {
-  const { currentProject, setCurrentProject } = useContext(BoardContext);
+  const { currentProject, changeCurrentBoard } = useContext(BoardContext);
 
   function dragEnd(result) {
     //safety fro dragging out of column
@@ -24,35 +24,31 @@ export default function Board() {
       const [removed] = sourceItems.splice(source.index, 1);
       destinationItems.splice(destination.index, 0, removed);
       //change data to new context information
-      setCurrentProject((prev) => ({
-        ...prev,
-        board: {
-          ...prev.board,
-          [destination.droppableId]: {
-            ...destinationColumn,
-            items: [...destinationItems],
-          },
-          [source.droppableId]: {
-            ...sourceColumn,
-            items: [...sourceItems],
-          },
+      changeCurrentBoard({
+        ...currentProject.board,
+        [destination.droppableId]: {
+          ...destinationColumn,
+          items: [...destinationItems],
         },
-      }));
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: [...sourceItems],
+        },
+      });
     } else {
       const sourceColumn = currentProject.board[source.droppableId];
       const copiedItems = [...sourceColumn.items];
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
-      setCurrentProject((prev) => ({
-        ...prev,
+      changeCurrentBoard({
         board: {
-          ...prev.board,
+          ...changeCurrentBoard.board,
           [source.droppableId]: {
             ...sourceColumn,
             items: [copiedItems],
           },
         },
-      }));
+      });
     }
   }
 

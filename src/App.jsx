@@ -14,7 +14,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar toggleDropdown={setShowAddTicket} />
+      <Navbar
+        setShowAddTicket={setShowAddTicket}
+        setIsOpen={setIsOpen}
+        isOpen={isOpen}
+      />
       <main>
         <Sidebar />
         <Board />
