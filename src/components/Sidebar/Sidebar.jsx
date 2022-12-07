@@ -8,7 +8,7 @@ export default function Sidebar() {
 
   return (
     <div className="sidebar">
-      <p>All Board ({projects.length})</p>
+      <p>All Boards ({projects.length})</p>
       <Links />
     </div>
   );

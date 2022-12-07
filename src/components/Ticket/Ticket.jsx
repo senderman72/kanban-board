@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Ticket.scss";
 
-export default function Ticket({ data, provided, snapshot }) {
+export default function Ticket({ item, provided, snapshot }) {
   const [showSubTasks, setshowSubTasks] = useState(false);
 
   function toggleShow() {
@@ -18,13 +18,13 @@ export default function Ticket({ data, provided, snapshot }) {
       onClick={toggleShow}
       className="ticket"
     >
-      <h3 className="heading-m">{data.title}</h3>
-      <p className="body-m">{data.description}</p>
-      <p className="body-m">{data.tasks.length} subtasks</p>
+      <h3 className="heading-m">{item.title}</h3>
+      <p className="body-m">{item.description}</p>
+      <p className="body-m">{item.task?.length} subtasks</p>
       <ul>
         {showSubTasks &&
-          data.tasks.map((task, index) => {
-            return <li key={index}>{task}</li>;
+          item.tasks.map((item) => {
+            return <li key={item}>{item}</li>;
           })}
       </ul>
     </div>

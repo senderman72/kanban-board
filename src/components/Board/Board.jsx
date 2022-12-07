@@ -8,7 +8,7 @@ export default function Board() {
   const { currentProject, changeCurrentBoard } = useContext(BoardContext);
 
   function dragEnd(result) {
-    //safety fro dragging out of column
+    //safety for dragging out of column
     if (!result.destination) return;
 
     const { destination, source } = result;
@@ -41,12 +41,10 @@ export default function Board() {
       const [removed] = copiedItems.splice(source.index, 1);
       copiedItems.splice(destination.index, 0, removed);
       changeCurrentBoard({
-        board: {
-          ...changeCurrentBoard.board,
-          [source.droppableId]: {
-            ...sourceColumn,
-            items: [copiedItems],
-          },
+        ...currentProject.board,
+        [source.droppableId]: {
+          ...sourceColumn,
+          items: [...copiedItems],
         },
       });
     }
@@ -57,14 +55,15 @@ export default function Board() {
       <DragDropContext onDragEnd={(res) => dragEnd(res)}>
         {Object.entries(currentProject.board).map(([id, column], idx) => {
           return (
-            <div id={idx}>
+            <div id={idx} key={id}>
               <Droppable key={id} droppableId={id}>
                 {(provided, snapshot) => {
+                  console.log(column);
                   return (
                     <div
                       {...provided.droppableProps}
-                      active={snapshot.isDraggingOver.toString()}
                       ref={provided.innerRef}
+                      active={snapshot.isDraggingOver.toString()}
                       className="board-column"
                     >
                       <div className="board-title">
@@ -73,7 +72,8 @@ export default function Board() {
                         ></div>
                         <h4 className="heading-s">{column.name}</h4>
                       </div>
-                      {column.items.map((item, index) => {
+
+                      {column.items?.map((item, index) => {
                         return (
                           <Draggable
                             index={index}
@@ -85,13 +85,14 @@ export default function Board() {
                                 <Ticket
                                   provided={provided}
                                   snapshot={snapshot}
-                                  data={item}
+                                  item={item}
                                 />
                               );
                             }}
                           </Draggable>
                         );
                       })}
+                      {provided.placeholder}
                     </div>
                   );
                 }}
